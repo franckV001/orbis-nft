@@ -105,6 +105,65 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
+
+      {/* Footer */}
+      <footer className="bg-background border-t border-white/5 px-6 sm:px-10 lg:px-16 py-12">
+        <div className="mx-auto max-w-[1831px] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+          {/* Left — brand */}
+          <div className="flex flex-col gap-3">
+            <span className="font-grotesk text-[22px] uppercase text-cream tracking-wider">
+              Orbis.Nft
+            </span>
+            <span className="font-condiment text-neon text-[20px]">
+              Beyond earth and its boundaries
+            </span>
+            <p className="font-mono text-[12px] uppercase text-cream/40 max-w-[280px] leading-relaxed">
+              A curated collection of AI-generated space objects. Each piece is unique, on-chain, and permanent.
+            </p>
+          </div>
+
+          {/* Center — nav links */}
+          <nav className="flex flex-col gap-3">
+            <span className="font-grotesk text-[11px] uppercase text-cream/40 tracking-widest mb-1">Navigation</span>
+            {NAV_LINKS.map(({ label, to }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  `font-grotesk text-[13px] uppercase transition-colors duration-200 ${
+                    isActive ? 'text-neon' : 'text-cream/60 hover:text-cream'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+
+          {/* Right — social */}
+          <div className="flex flex-col gap-4">
+            <span className="font-grotesk text-[11px] uppercase text-cream/40 tracking-widest">Follow us</span>
+            <div className="flex gap-3">
+              {[Mail, X, GitBranch].map((Icon, i) => (
+                <button key={i} className="liquid-glass rounded-[1rem] w-12 h-12 flex items-center justify-center text-cream hover:bg-white/10 transition-colors duration-200">
+                  <Icon size={18} />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mx-auto max-w-[1831px] mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-mono text-[11px] uppercase text-cream/30">
+            © 2026 Orbis.Nft — All rights reserved
+          </p>
+          <p className="font-mono text-[11px] uppercase text-cream/20">
+            333 unique space objects on Ethereum
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }
